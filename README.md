@@ -1,129 +1,31 @@
+Project Overview
 
+The RAG pipeline integrates external data into the response generation process. Instead of relying only on pretrained knowledge, the system retrieves relevant information from a document store and uses it to generate better answers.
 
-# 🚀 RAG System with LangChain and FastAPI 🌐
+This project includes:
 
-Welcome to this repository! This project demonstrates how to build a powerful RAG system using **LangChain** and **FastAPI** for generating contextually relevant and accurate responses by integrating external data into the generative process.
+Document loading from multiple sources such as text files and PDFs
+Text splitting for handling large documents efficiently
+Embedding generation for semantic understanding
+Vector storage for fast similarity search
+Retrieval of relevant document chunks based on user queries
+Response generation using language models
+Deployment as a scalable API using FastAPI
+System Architecture
 
-## 📋 Project Overview
+The workflow follows a typical RAG pipeline:
 
-The RAG system combines retrieval and generation to provide smarter AI-driven responses. Using **LangChain** for document handling and embeddings, and **FastAPI** for deploying a fast, scalable API, this project includes:
+Load and preprocess documents
+Split text into smaller chunks
+Convert text into vector embeddings
+Store embeddings in a vector database (FAISS or PostgreSQL)
+Retrieve relevant chunks based on query similarity
+Pass retrieved context to the language model
+Generate a final response
 
-- 🗂️ **Document Loading**: Load data from various sources (text, PDFs, etc.).
-- ✂️ **Text Splitting**: Break large documents into manageable chunks.
-- 🧠 **Embeddings**: Generate vector embeddings for efficient search and retrieval.
-- 🔍 **Vector Stores**: Store embeddings in a vector store for fast similarity searches.
-- 🔧 **Retrieval**: Retrieve the most relevant document chunks based on user queries.
-- 💬 **Generative Response**: Use retrieved data with language models (LLMs) to generate accurate, context-aware answers.
-- 🌐 **FastAPI**: Deploy the RAG system as a scalable API for easy interaction.
-
-## ⚙️ Setup and Installation
-
-### Prerequisites
-
-Make sure you have the following installed:
-- 🐍 Python 3.10+
-- 🐳 Docker (optional, for deployment)
-- 🛠️ PostgreSQL or FAISS (for vector storage)
-
-### Installation Steps
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/anarojoecheburua/RAG-with-Lanchain-and-FastAPI.git
-   cd rag-system
-   ```
-
-2. **Set up a virtual environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # For Linux/Mac
-   venv\Scripts\activate      # For Windows
-   ```
-
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the FastAPI server**:
-   ```bash
-   uvicorn app.main:app --reload
-   ```
-
-   Now, your FastAPI app will be running at `http://127.0.0.1:8000` 🎉!
-
-### Add Your OpenAI API Key 🔑
-
-To integrate the OpenAI language model into your RAG system, you’ll need to provide your OpenAI API key. Follow these steps to set it up:
-
-1. Get your API key: If you don’t have one yet, you can generate your OpenAI API key by logging into your account on the OpenAI platform.
-
-2. Create a .env file: In the root directory of your project, create a .env file to securely store your API key. The .env file allows you to load environment variables.
-
-3. Add the API key to the .env file: Open the .env file and add the following line, replacing your-openai-api-key with your actual OpenAI key:
-
-```bash
-OPENAI_API_KEY=your-openai-api-key
-```
-
-4. Load the API key in your code: Ensure your application loads this key when it runs. In your Python code, you can use the python-dotenv package to automatically load environment variables from the .env file:
-
-```bash
-pip install python-dotenv
-```
-
-Then, wherever you're initializing the OpenAI API, add:
-
-```
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-openai_api_key = os.getenv("OPENAI_API_KEY")
-```
-Now, your OpenAI API key is securely loaded from the environment, and you're ready to start using it in your RAG system! 🎉
-
-## 🛠️ Features
-
-- **Retrieval-Augmented Generation**: Combines the best of both worlds—retrieving relevant data and generating insightful responses.
-- **Scalable API**: FastAPI makes it easy to deploy and scale the RAG system.
-- **Document Handling**: Supports multiple document types for loading and processing.
-- **Vector Embeddings**: Efficient search with FAISS or other vector stores.
-
-## 🛡️ Security
-
-- 🔐 **OAuth2 and API Key** authentication support for secure API access.
-- 🔒 **TLS/SSL** for encrypting data in transit.
-- 🛡️ **Data encryption** for sensitive document storage.
-
-## 🚀 Deployment
-
-### Docker Deployment
-If you want to deploy your RAG system using Docker, simply build the Docker image and run the container:
-
-```bash
-docker build -t rag-system .
-docker run -p 8000:8000 rag-system
-```
-
-### Cloud Deployment
-Deploy your RAG system to the cloud using platforms like **AWS**, **Azure**, or **Google Cloud** with minimal setup.
-
-## 🧠 Future Enhancements
-
-- 🔄 **Real-time Data Integration**: Add real-time data sources for dynamic responses.
-- 🤖 **Advanced Retrieval Techniques**: Implement deep learning-based retrievers for better query understanding.
-- 📊 **Monitoring Tools**: Add monitoring with tools like Prometheus or Grafana for performance insights.
-
-## 🤝 Contributing
-
-Want to contribute? Feel free to fork this repository, submit a pull request, or open an issue. We welcome all contributions! 🛠️
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-🎉 **Thank you for checking out the RAG System with LangChain and FastAPI!** If you have any questions or suggestions, feel free to reach out or open an issue. Let's build something amazing!
+Features
+Retrieval-Augmented Generation for improved response accuracy
+Scalable API built with FastAPI
+Support for multiple document formats
+Efficient similarity search using vector databases
+Modular and extensible architecture
